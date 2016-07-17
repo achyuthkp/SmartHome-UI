@@ -64,7 +64,7 @@ if(this.id =="submitTV")
 	if ($('#group1').is(":checked"))
 	{
 	    if ($('#timerbox1').val() == 0) {
-            sweetAlert("Oops...", "Timer cannot be empty! Enter a value", "error");
+            sweetAlert("Error", "Timer cannot be empty, please enter a value!", "error");
             return;
         }
         else 
@@ -76,7 +76,7 @@ if(this.id =="submitTV")
                 toggle = 1;
             }
             var data ={timervalue:val, toggle:toggle};
-            swal("Great!", "The data is submitted!", "success");
+            swal("Success!", "Timer is enabled", "success");
         }
 	    
 	}
@@ -86,7 +86,7 @@ else if (this.id =="submitFridge")
     if ($('#group2').is(":checked"))
     {
         if ($('#timerbox2').val() == 0) {
-            sweetAlert("Oops...", "Timer cannot be empty! Enter a value", "error");
+            sweetAlert("Error", "Timer cannot be empty, please enter a value!", "error");
             return;
         }
         else 
@@ -98,7 +98,7 @@ else if (this.id =="submitFridge")
                 toggle = 1;
             }
             var data ={timervalue:val, toggle:toggle};
-            swal("Great!", "The data is submitted!", "success");
+            swal("Success!", "Timer is enabled", "success");
         }
         
     }
@@ -108,7 +108,7 @@ else if (this.id =="submitWashing")
     if ($('#group3').is(":checked"))
     {
         if ($('#timerbox3').val() == 0) {
-            sweetAlert("Oops...", "Timer cannot be empty! Enter a value", "error");
+            sweetAlert("Error", "Timer cannot be empty, please enter a value!", "error");
             return;
         }
         else 
@@ -120,7 +120,7 @@ else if (this.id =="submitWashing")
                 toggle = 1;
             }
             var data ={timervalue:val, toggle:toggle};
-            swal("Great!", "The data is submitted!", "success");
+            swal("Success!", "Timer is enabled", "success");
         }
         
     }
@@ -130,7 +130,7 @@ else if (this.id =="submitHeater1")
     if ($('#group4').is(":checked"))
     {
         if ($('#timerbox4').val() == 0) {
-            sweetAlert("Oops...", "Timer cannot be empty! Enter a value", "error");
+            sweetAlert("Error", "Timer cannot be empty, please enter a value!", "error");
             return;
         }
         else 
@@ -142,7 +142,7 @@ else if (this.id =="submitHeater1")
                 toggle = 1;
             }
             var data ={timervalue:val, toggle:toggle};
-            swal("Great!", "The data is submitted!", "success");
+            swal("Success!", "Timer is enabled", "success");
         }
         
     }
@@ -152,7 +152,7 @@ else if (this.id =="submitHeater2")
     if ($('#group5').is(":checked"))
     {
         if ($('#timerbox5').val() == 0) {
-            sweetAlert("Oops...", "Timer cannot be empty! Enter a value", "error");
+            sweetAlert("Error", "Timer cannot be empty, please enter a value!", "error");
             return;
         }
         else 
@@ -164,7 +164,7 @@ else if (this.id =="submitHeater2")
                 toggle = 1;
             }
             var data ={timervalue:val, toggle:toggle};
-            swal("Great!", "The data is submitted!", "success");
+            swal("Success!", "Timer is enabled", "success");
         }
         
     }
@@ -174,7 +174,7 @@ else if (this.id =="submitAC")
     if ($('#group6').is(":checked"))
     {
         if ($('#timerbox6').val() == 0) {
-            sweetAlert("Oops...", "Timer cannot be empty! Enter a value", "error");
+            sweetAlert("Error", "Timer cannot be empty, please enter a value!", "error");
             return;
         }
         else 
@@ -186,7 +186,7 @@ else if (this.id =="submitAC")
                 toggle = 1;
             }
             var data ={timervalue:val, toggle:toggle};
-            swal("Great!", "The data is submitted!", "success");
+            swal("Success!", "Timer is enabled", "success");
         }
         
     }
