@@ -710,7 +710,7 @@ margin: -5px 0 5px 0;
 text-transform: uppercase;
 }
 
-fieldset input[type=text] {
+/*fieldset input[type=text] {
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
@@ -736,7 +736,7 @@ border: 1px solid #77BACE;
 -moz-box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
 box-shadow: inset 0 2px 2px #ccc, 0 0 10px #ADDCE6;
 }
-
+*/
 fieldset select {
 width: 96%;
 margin: 0 10px;
