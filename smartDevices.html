@@ -52,8 +52,14 @@
     $(function(){
         $('.column').equalHeight();
     });
-</script>
-<!-- New code - Test --> 
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var data;
+      loadControls(data); 
+    });
+  </script>
+  <!-- New code - Test --> 
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
   <link href="css/font-awesome/font-awesome.css" rel="stylesheet">
@@ -69,8 +75,8 @@
 		<article class="module width_3_quarter">
 		<header><h3><b>Television</b></h3></header>
 				<div class="module_content">
-					<h2>Device ID :<p id="ID">1</p><hr/>
-					<b>Location : <i>Living Room</i></b><hr/>
+					<h2>Device ID :<p id="ID1">1</p><hr/>
+					Location : <i><p id="location1">Living Room</p></i><hr/>
 					<img src="images/tv.jpg" alt="Image of Television" height="150" width="175" style="float:right"/>
 					<b>Control :</b></h2>
 					<div class="row">
@@ -104,8 +110,8 @@
 		<article class="module width_3_quarter">
 		<header><h3><b>Refrigerator</b></h3></header>
 				<div class="module_content">
-					<h2>Device ID :<p id="ID">2</p><hr/>
-					<b>Location : <i>Kitchen</i></b><hr/>
+					<h2>Device ID :<p id="ID2">2</p><hr/>
+					Location : <p id="location2"><i>Kitchen</i></p><hr/>
 					<img src="images/refrigerator.png" alt="Image of Refrigerator" height="150" width="145" style="float:right"/>
 					<b>Control :</b></h2>
 					<div class="row">
@@ -133,8 +139,8 @@
 		<article class="module width_3_quarter">
 		<header><h3><b>Washing Machine</b></h3></header>
 				<div class="module_content">
-					<h2>Device ID :<p id="ID">3</p><hr/>
-					<b>Location : <i>Laundry</i></b><hr/>
+					<h2>Device ID :<p id="ID3">3</p><hr/>
+					Location : <p id="location3"><i>Laundry</i></p><hr/>
 					<img src="images/washingmachine.jpg" alt="Image of WashingMachine" height="125" width="125" style="float:right"/>
 					<b>Control :</b></h2>
 					<div class="row">
@@ -162,8 +168,8 @@
 		<article class="module width_3_quarter">
 		<header><h3><b>Heater 1</b></h3></header>
 				<div class="module_content">
-					<h2>Device ID :<p id="ID">4</p><hr/>
-					<b>Location : <i>Bedroom 1</i></b><hr/>
+					<h2>Device ID :<p id="ID4">4</p><hr/>
+					Location : <p id="location4"><i>Bedroom 1</i></p><hr/>
 					<img src="images/heater1.jpg" alt="Image of Heater 1" height="125" width="200" style="float:right"/>
 					<b>Control :</b></h2>
 					<div class="row">
@@ -192,8 +198,8 @@
 		<article class="module width_3_quarter">
 		<header><h3><b>Heater 2</b></h3></header>
 				<div class="module_content">
-					<h2>Device ID :<p id="ID">5</p><hr/>
-					<b>Location : <i>Bedroom 2</i></b><hr/>
+					<h2>Device ID :<p id="ID5">5</p><hr/>
+					Location : <p id="location5"><i>Bedroom 2</i></p><hr/>
 					<img src="images/heater2.jpg" alt="Image of Heater 2" height="125" width="175" style="float:right"/>
 					<b>Control :</b></h2>
 					<div class="row">
@@ -220,8 +226,8 @@
 		<article class="module width_3_quarter">
 		<header><h3><b>Air Conditioner</b></h3></header>
 				<div class="module_content">
-					<h2>Device ID :<p id="ID">6</p><hr/>
-					<b>Location : <i>Bedroom 1</i></b><hr/>
+					<h2>Device ID :<p id="ID6">6</p><hr/>
+					Location : <p id="location6"><i>Bedroom 1</i></p><hr/>
 					<img src="images/ac.jpg" alt="Image of AC" height="125" width="225" style="float:right"/>
 					<b>Control :</b></h2>
 					<div class="row">

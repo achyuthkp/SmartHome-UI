@@ -87,57 +87,65 @@ function cleanLoginform(){
 
 /* Switch ON/OFF click functions */
 $('#cmn-toggle-1').click(function() {
-	var status = 0;
+	var status = 0; 
+    var id = $("#ID1").text();
+    console.log(id);
 	if(this.checked)
     {   
         status = 1;  	
     }
-    var data = {status:status};
+    var data = {id:id, status:status, action:"status"};
 
 });
 $('#cmn-toggle-2').click(function() {
 	var status = 0;
+    var id = $("#ID2").text();
+    console.log(id);
     if(this.checked)
     {   
         status = 1;     
     }
-    var data = {status:status};
+    var data = {id:id, status:status, action:"status"};
 
 });
 $('#cmn-toggle-3').click(function() {
 	var status = 0;
+    var id = $("#ID3").text();
     if(this.checked)
     {   
         status = 1;     
     }
-    var data = {status:status};
+    var data = {id:id, status:status, action:"status"};
     
 });
 $('#cmn-toggle-4').click(function() {
 	var status = 0;
+    var id = $("#ID4").text();
     if(this.checked)
     {   
         status = 1;     
     }
-    var data = {status:status};
+    var data = {id:id, status:status, action:"status"};
     
 });
 $('#cmn-toggle-5').click(function() {
 	var status = 0;
+    var id = $("#ID5").text();
     if(this.checked)
     {   
         status = 1;     
     }
-    var data = {status:status};
+    var data = {id:id, status:status, action:"status"};
     
 });
 $('#cmn-toggle-6').click(function() {
 	var status = 0;
+    var id = $("#ID6").text();
     if(this.checked)
     {   
         status = 1;     
     }
-    var data = {status:status};
+    var data = {id:id, status:status, action:"status"};
     
 });
 /* End of Switch ON/OFF Click functions */
@@ -157,12 +165,13 @@ if(this.id =="submitTV")
         else 
         {
             var val = $('#timerbox1').val();
+            var id = $("#ID1").text();
             var toggle = 0;
             if ($('#togglecheck1').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={timervalue:val, toggle:toggle};
+            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
         }
 	    
@@ -179,12 +188,13 @@ else if (this.id =="submitFridge")
         else 
         {
             var val = $('#timerbox2').val();
+            var id = $("#ID2").text();
             var toggle = 0;
             if ($('#togglecheck2').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={timervalue:val, toggle:toggle};
+            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
         }
         
@@ -202,11 +212,12 @@ else if (this.id =="submitWashing")
         {
             var val = $('#timerbox3').val();
             var toggle = 0;
+            var id = $("#ID3").text();
             if ($('#togglecheck3').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={timervalue:val, toggle:toggle};
+            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
         }
         
@@ -224,11 +235,12 @@ else if (this.id =="submitHeater1")
         {
             var val = $('#timerbox4').val();
             var toggle = 0;
+            var id = $("#ID4").text();
             if ($('#togglecheck4').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={timervalue:val, toggle:toggle};
+            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
         }
         
@@ -246,11 +258,12 @@ else if (this.id =="submitHeater2")
         {
             var val = $('#timerbox5').val();
             var toggle = 0;
+            var id = $("#ID5").text();
             if ($('#togglecheck5').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={timervalue:val, toggle:toggle};
+            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
         }
         
@@ -267,12 +280,13 @@ else if (this.id =="submitAC")
         else 
         {
             var val = $('#timerbox6').val();
+            var id = $("#ID6").text();
             var toggle = 0;
             if ($('#togglecheck6').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={timervalue:val, toggle:toggle};
+            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
         }
         
