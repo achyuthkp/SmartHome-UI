@@ -1,3 +1,90 @@
+
+function authenticateUser(username,password)
+{
+	var data = {username:username, password:password};
+
+	$.ajax({
+      url: 'Authenticate',
+      type: 'GET',
+      dataType: 'json',
+      data: data,
+      success: function(data, status) {
+      	Redirect(data);
+      },
+      error: function(xhr, desc, err) {
+        $("#errlabel").text("Invalid login details");
+      }
+      });
+}
+
+
+/**
+ * This method sends the data to servlet
+ */
+function sendToServlet(data,url,action){
+	var xmlhttp = new XMLHttpRequest();  
+	xmlhttp.onreadystatechange = function callback() {  
+	     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	    	 var identitylist = JSON.parse(xmlhttp.responseText);
+	    
+	    	 if(action == "signin"){
+	    		 if(identitylist.result == "Invalid login details"){
+	    			 document.getElementById("errlabel").innerHTML ="Invalid login details";
+	    		 }
+	    		 else{
+	    			 $("#myModal").modal('hide');  				 
+	    			 window.location="index.html";
+	    		 }  	 
+	    	 }
+	    	 if(action == "register"){
+
+	    		 if(identitylist.result == "User name already exists"){
+	    			 document.getElementById("registererrlabel").innerHTML ="User name already exists";
+	    			 return;
+	    		 }
+	    		 if(identitylist.result == "Registration succeeded"){
+	    			 $("#registerModal").modal('hide');
+	    		 }
+	    	 }
+	     }
+	     else {  
+	       // have not received data from server yet  
+	     }  
+	};  
+	xmlhttp.open("POST", url, true);  
+	xmlhttp.setRequestHeader('Content-Type', 'application/JSON;charset=UTF-8');
+	xmlhttp.send(JSON.stringify(data))  
+ }
+ 
+
+
+/**
+ * This method is called when the user submit the credentials
+ */
+function onSignin(){
+	var username = $("#username").val();
+	var password = $("#inputPassword").val();
+	$("#errlabel").text("");
+	
+	if(username == "" || password ==""){
+	$("#errlabel").text("Fields cannot be blank");
+		return;
+	}
+	
+	var data = {username:username, password:password, level:""};
+	sendToServlet(data,"Authenticate", "signin");
+}
+
+
+/**
+ * This method clear the login form
+ */
+function cleanLoginform(){
+	$("#errlabel").text("");
+	$("#username").text("");
+	$("#inputPassword").text("");
+}
+
 /* Switch ON/OFF click functions */
 $('#cmn-toggle-1').click(function() {
 	var status = 0;
