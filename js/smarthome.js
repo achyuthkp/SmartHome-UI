@@ -21,14 +21,14 @@ function authenticateUser(username,password)
 /**
  * This method sends the data to servlet
  */
-function sendToServlet(data,url,action){
+function sendToServlet(data,url,action, method){
 	var xmlhttp = new XMLHttpRequest();  
 	xmlhttp.onreadystatechange = function callback() {  
 	     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-	    	 var identitylist = JSON.parse(xmlhttp.responseText);
+	    	 var response = JSON.parse(xmlhttp.responseText);
 	    
 	    	 if(action == "signin"){
-	    		 if(identitylist.result == "Invalid login details"){
+	    		 if(response.result == "Invalid login details"){
 	    			 document.getElementById("errlabel").innerHTML ="Invalid login details";
 	    		 }
 	    		 else{
@@ -38,20 +38,25 @@ function sendToServlet(data,url,action){
 	    	 }
 	    	 if(action == "register"){
 
-	    		 if(identitylist.result == "User name already exists"){
+	    		 if(response.result == "User name already exists"){
 	    			 document.getElementById("registererrlabel").innerHTML ="User name already exists";
 	    			 return;
 	    		 }
-	    		 if(identitylist.result == "Registration succeeded"){
+	    		 if(response.result == "Registration succeeded"){
 	    			 $("#registerModal").modal('hide');
 	    		 }
+	    	 }
+	    	 if(action == "LoadDevice"){
+	    		 loadControls(response);
+	    	 }
+	    	 if(action == "StatusChange"){
 	    	 }
 	     }
 	     else {  
 	       // have not received data from server yet  
 	     }  
 	};  
-	xmlhttp.open("POST", url, true);  
+	xmlhttp.open(method, url, true);  
 	xmlhttp.setRequestHeader('Content-Type', 'application/JSON;charset=UTF-8');
 	xmlhttp.send(JSON.stringify(data))  
  }
@@ -72,7 +77,7 @@ function onSignin(){
 	}
 	
 	var data = {username:username, password:password, level:""};
-	sendToServlet(data,"Authenticate", "signin");
+	sendToServlet(data,"Authenticate", "signin","POST");
 }
 
 
@@ -95,7 +100,7 @@ $('#cmn-toggle-1').click(function() {
         status = 1;  	
     }
     var data = {id:id, status:status, action:"status"};
-
+    sendToServlet(data,"smartdevices", "StatusChange","POST");
 });
 $('#cmn-toggle-2').click(function() {
 	var status = 0;
@@ -106,7 +111,7 @@ $('#cmn-toggle-2').click(function() {
         status = 1;     
     }
     var data = {id:id, status:status, action:"status"};
-
+    sendToServlet(data,"smartdevices", "StatusChange","POST");
 });
 $('#cmn-toggle-3').click(function() {
 	var status = 0;
@@ -116,7 +121,7 @@ $('#cmn-toggle-3').click(function() {
         status = 1;     
     }
     var data = {id:id, status:status, action:"status"};
-    
+    sendToServlet(data,"smartdevices", "StatusChange","POST");
 });
 $('#cmn-toggle-4').click(function() {
 	var status = 0;
@@ -126,7 +131,7 @@ $('#cmn-toggle-4').click(function() {
         status = 1;     
     }
     var data = {id:id, status:status, action:"status"};
-    
+    sendToServlet(data,"smartdevices", "StatusChange","POST");
 });
 $('#cmn-toggle-5').click(function() {
 	var status = 0;
@@ -136,7 +141,7 @@ $('#cmn-toggle-5').click(function() {
         status = 1;     
     }
     var data = {id:id, status:status, action:"status"};
-    
+    sendToServlet(data,"smartdevices", "StatusChange","POST");
 });
 $('#cmn-toggle-6').click(function() {
 	var status = 0;
@@ -146,7 +151,7 @@ $('#cmn-toggle-6').click(function() {
         status = 1;     
     }
     var data = {id:id, status:status, action:"status"};
-    
+    sendToServlet(data,"smartdevices", "StatusChange","POST");
 });
 /* End of Switch ON/OFF Click functions */
 
@@ -155,7 +160,8 @@ $('button').click(function(){
 
 if(this.id =="submitTV")
 {
-
+	var id = $("#ID1").text();
+	 var timerSet = 0;
 	if ($('#group1').is(":checked"))
 	{
 	    if ($('#timerbox1').val() == 0) {
@@ -164,6 +170,7 @@ if(this.id =="submitTV")
         }
         else 
         {
+        	timerSet=1;
             var val = $('#timerbox1').val();
             var id = $("#ID1").text();
             var toggle = 0;
@@ -171,14 +178,21 @@ if(this.id =="submitTV")
             {
                 toggle = 1;
             }
-            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
+            var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
+            sendToServlet(data,"smartdevices", "TimerSet","POST");
         }
 	    
 	}
+	else{
+	   	 var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
+	   	 sendToServlet(data,"smartdevices", "TimerSet","POST");
+  }
 }	
 else if (this.id =="submitFridge") 
 {
+	 var id = $("#ID2").text();
+	 var timerSet = 0;
     if ($('#group2').is(":checked"))
     {
         if ($('#timerbox2').val() == 0) {
@@ -188,20 +202,27 @@ else if (this.id =="submitFridge")
         else 
         {
             var val = $('#timerbox2').val();
-            var id = $("#ID2").text();
+            timerSet = 1;
             var toggle = 0;
             if ($('#togglecheck2').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
+            var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
+            sendToServlet(data,"smartdevices", "TimerSet","POST");
         }
         
     }
+    else{
+	   	 var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
+	   	 sendToServlet(data,"smartdevices", "TimerSet","POST");
+  }
 }
 else if (this.id =="submitWashing") 
 {
+	var timerSet = 0;
+	 var id = $("#ID3").text();
     if ($('#group3').is(":checked"))
     {
         if ($('#timerbox3').val() == 0) {
@@ -212,19 +233,26 @@ else if (this.id =="submitWashing")
         {
             var val = $('#timerbox3').val();
             var toggle = 0;
-            var id = $("#ID3").text();
+            timerSet = 1;
             if ($('#togglecheck3').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
+            var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
+            sendToServlet(data,"smartdevices", "TimerSet","POST");
         }
         
     }
+    else{
+	   	 var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
+	   	 sendToServlet(data,"smartdevices", "TimerSet","POST");
+  }
 }
 else if (this.id =="submitHeater1") 
 {
+	var id = $("#ID4").text();
+	var timerSet = 0;
     if ($('#group4').is(":checked"))
     {
         if ($('#timerbox4').val() == 0) {
@@ -235,19 +263,26 @@ else if (this.id =="submitHeater1")
         {
             var val = $('#timerbox4').val();
             var toggle = 0;
-            var id = $("#ID4").text();
+            timerSet = 1;
             if ($('#togglecheck4').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
+            var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
+            sendToServlet(data,"smartdevices", "TimerSet","POST");
         }
         
     }
+    else{
+	   	 var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
+	   	 sendToServlet(data,"smartdevices", "TimerSet","POST");
+   }
 }
 else if (this.id =="submitHeater2") 
 {
+	var id = $("#ID5").text();
+	var timerSet = 0;
     if ($('#group5').is(":checked"))
     {
         if ($('#timerbox5').val() == 0) {
@@ -258,38 +293,51 @@ else if (this.id =="submitHeater2")
         {
             var val = $('#timerbox5').val();
             var toggle = 0;
-            var id = $("#ID5").text();
+            timerSet = 1;
             if ($('#togglecheck5').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
+            var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
+            sendToServlet(data,"smartdevices", "TimerSet","POST");
         }
         
     }
+    else{
+	   	 var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
+	   	 sendToServlet(data,"smartdevices", "TimerSet","POST");
+   }
 }
 else if (this.id =="submitAC") 
 {
-    if ($('#group6').is(":checked"))
+	var id = $("#ID6").text();
+	var timerSet = 0;
+	if ($('#group6').is(":checked"))
     {
-        if ($('#timerbox6').val() == 0) {
+    	
+    	if ($('#timerbox6').val() == 0) {
             sweetAlert("Error", "Timer cannot be empty, please enter a value!", "error");
             return;
         }
         else 
         {
             var val = $('#timerbox6').val();
-            var id = $("#ID6").text();
+            timerSet = 1;
             var toggle = 0;
             if ($('#togglecheck6').is(":checked"))
             {
                 toggle = 1;
             }
-            var data ={id:id, timervalue:val, toggle:toggle, action:"timer"};
+            var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
             swal("Success!", "Timer is enabled", "success");
+            sendToServlet(data,"smartdevices", "TimerSet","POST");
         }
         
+    }
+    else{
+    	 var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
+    	 sendToServlet(data,"smartdevices", "TimerSet","POST");
     }
 }
 

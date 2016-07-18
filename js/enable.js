@@ -1,5 +1,4 @@
 $(function() {
-    alert("funct1");
     enable1();
     $("#group1").click(enable1);
 });
@@ -81,7 +80,7 @@ function enable6() {
 }
 /* End of enable 6*/
 /* Enable Controls for all buttons */
-function loadControls(var data)
+function loadControls(data)
 {
   // var data = [ { id:'1', location:"Living Room", status:1, timer:1, timerbox:60, toggle:1 },
   //            { id:'2', location:"Kitchen", status:1, timer:0, timerbox:0, toggle:0 },
@@ -92,9 +91,11 @@ function loadControls(var data)
   //           ];
 
   /* ID 1 Content loading */
-  $("#ID1").text(data[0].id); 
-  $("#location1").text(data[0].location);
-  if(data[0].status==1)
+
+
+ $("#ID1").text(data[1]["id"]); 
+  $("#location1").text(data[1]["location"]);
+  if(data[1]["status"]==1)
   {
     $("#cmn-toggle-1").attr('checked', true);
   }
@@ -102,12 +103,12 @@ function loadControls(var data)
   {
     $("#cmn-toggle-1").attr('checked', false);
   }
-  if (data[0].timer == 1) 
-  { alert("call1");
+  if (data[1]["timer"] == 1) 
+  { 
     enable1();
     $("#group1").attr('checked', true);
-    $("#timerbox1").val(data[0].timerbox);
-    if (data[0].toggle == 1) 
+    $("#timerbox1").val(data[1]["value"]);
+    if (data[1]["toggle"] == 1) 
     {
       $("#togglecheck1").attr('checked', true);  
     }
@@ -119,13 +120,12 @@ function loadControls(var data)
   else
   {
     $("#group1").attr('checked', false);
-    alert("call2");
     enable1();
   }
-  /* ID 2 Content loading */
-  $("#ID2").text(data[1].id); 
-  $("#location2").text(data[1].location);
-  if(data[1].status==1)
+
+  $("#ID2").text(data[2]["id"]); 
+  $("#location2").text(data[2]["location"]);
+  if(data[2]["status"]==1)
   {
     $("#cmn-toggle-2").attr('checked', true);
   }
@@ -133,11 +133,11 @@ function loadControls(var data)
   {
     $("#cmn-toggle-2").attr('checked', false);
   }
-  if (data[1].timer == 1) 
+  if (data[2]["timer"] == 1) 
   {
     $("#group2").attr('checked', true);
-    $("#timerbox2").val(data[1].timerbox);
-    if (data[1].toggle == 1) 
+    $("#timerbox2").val(data[2]["value"]);
+    if (data[2]["toggle"] == 1) 
     {
       $("#togglecheck2").attr('checked', true);  
     }
@@ -151,10 +151,10 @@ function loadControls(var data)
     $("#group2").attr('checked', false);
     enable2();
   }
-  /* ID 3 Content loading */
-  $("#ID3").text(data[2].id); 
-  $("#location3").text(data[2].location);
-  if(data[2].status==1)
+
+  $("#ID3").text(data[3]["id"]); 
+  $("#location3").text(data[3]["location"]);
+  if(data[3]["status"]==1)
   {
     $("#cmn-toggle-3").attr('checked', true);
   }
@@ -162,11 +162,11 @@ function loadControls(var data)
   {
     $("#cmn-toggle-3").attr('checked', false);
   }
-  if (data[2].timer == 1) 
+  if (data[3]["timer"] == 1) 
   {
     $("#group3").attr('checked', true);
-    $("#timerbox3").val(data[2].timerbox);
-    if (data[2].toggle == 1) 
+    $("#timerbox3").val(data[3]["value"]);
+    if (data[3]["toggle"] == 1) 
     {
       $("#togglecheck3").attr('checked', true);  
     }
@@ -180,10 +180,10 @@ function loadControls(var data)
     $("#group3").attr('checked', false);
     enable3();
   }
-  /* ID 4 Content loading */
-  $("#ID4").text(data[3].id); 
-  $("#location4").text(data[3].location);
-  if(data[3].status==1)
+
+  $("#ID4").text(data[4]["id"]); 
+  $("#location4").text(data[4]["location"]);
+  if(data[4]["status"]==1)
   {
     $("#cmn-toggle-4").attr('checked', true);
   }
@@ -191,11 +191,11 @@ function loadControls(var data)
   {
     $("#cmn-toggle-4").attr('checked', false);
   }
-  if (data[3].timer == 1) 
+  if (data[4]["timer"] == 1) 
   {
     $("#group4").attr('checked', true);
-    $("#timerbox4").val(data[3].timerbox);
-    if (data[3].toggle == 1) 
+    $("#timerbox4").val(data[4]["value"]);
+    if (data[4]["toggle"] == 1) 
     {
       $("#togglecheck4").attr('checked', true);  
     }
@@ -209,10 +209,10 @@ function loadControls(var data)
     $("#group4").attr('checked', false);
     enable4();
   }
-  /* ID 5 Content loading */
-  $("#ID5").text(data[4].id); 
-  $("#location5").text(data[4].location);
-  if(data[4].status==1)
+
+  $("#ID5").text(data[5]["id"]); 
+  $("#location5").text(data[5]["location"]);
+  if(data[5]["status"]==1)
   {
     $("#cmn-toggle-5").attr('checked', true);
   }
@@ -220,11 +220,11 @@ function loadControls(var data)
   {
     $("#cmn-toggle-5").attr('checked', false);
   }
-  if (data[4].timer == 1) 
+  if (data[5]["timer"] == 1) 
   {
     $("#group5").attr('checked', true);
-    $("#timerbox5").val(data[4].timerbox);
-    if (data[4].toggle == 1) 
+    $("#timerbox5").val(data[5]["value"]);
+    if (data[5]["toggle"] == 1) 
     {
       $("#togglecheck5").attr('checked', true);  
     }
@@ -238,10 +238,10 @@ function loadControls(var data)
     $("#group5").attr('checked', false);
     enable5();
   }
-  /* ID 1 Content loading */
-  $("#ID6").text(data[5].id); 
-  $("#location6").text(data[5].location);
-  if(data[5].status==1)
+
+  $("#ID6").text(data[6]["id"]); 
+  $("#location6").text(data[6]["location"]);
+  if(data[6]["status"]==1)
   {
     $("#cmn-toggle-6").attr('checked', true);
   }
@@ -249,11 +249,11 @@ function loadControls(var data)
   {
     $("#cmn-toggle-6").attr('checked', false);
   }
-  if (data[5].timer == 1) 
+  if (data[6]["timer"] == 1) 
   {
     $("#group6").attr('checked', true);
-    $("#timerbox6").val(data[5].timerbox);
-    if (data[5].toggle == 1) 
+    $("#timerbox6").val(data[6]["value"]);
+    if (data[6]["toggle"] == 1) 
     {
       $("#togglecheck6").attr('checked', true);  
     }
