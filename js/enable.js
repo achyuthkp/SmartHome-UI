@@ -91,11 +91,9 @@ function loadControls(data)
   //           ];
 
   /* ID 1 Content loading */
-
-
- $("#ID1").text(data[1]["id"]); 
-  $("#location1").text(data[1]["location"]);
-  if(data[1]["status"]==1)
+  $("#ID1").text(data[0].id); 
+  $("#location1").text(data[0].location);
+  if(data[0].status==1)
   {
     $("#cmn-toggle-1").attr('checked', true);
   }

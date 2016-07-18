@@ -315,8 +315,7 @@ else if (this.id =="submitAC")
 	var timerSet = 0;
 	if ($('#group6').is(":checked"))
     {
-    	
-    	if ($('#timerbox6').val() == 0) {
+        if ($('#timerbox6').val() == 0) {
             sweetAlert("Error", "Timer cannot be empty, please enter a value!", "error");
             return;
         }

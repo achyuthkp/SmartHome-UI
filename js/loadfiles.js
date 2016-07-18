@@ -7,7 +7,6 @@ function load_smartDevices()
 function load_dashboard()
 {
 	closeNav();
-	// document.getElementById("dashboard").innerHTML='<object type="text/html" data="energyDashboard.html" ></object>';
 	$("#mainpane").load("index.xhtml");
 }
 
