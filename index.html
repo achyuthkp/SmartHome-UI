@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="css/style_navigationMenu.css">
   <script type="text/javascript" src="js/loadfiles.js"></script>
+  <script type="text/javascript" src="js/smarthome.js"></script>
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
@@ -20,6 +21,7 @@
   <!-- Testing new Alert Box -->
   <script src="dist/sweetalert-dev.js"></script>
   <script src="dist/sweetalert.min.js"></script>
+   
   <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
   <!-- End of Alert Box Test code -->
   <!-- Energy Tip CSS -->
@@ -38,8 +40,9 @@
     $("#tips").text(Quotation[index]);
     }
     $(document).ready(function(){
-    loadQuotation();
-    window.setInterval(loadQuotation,10000); 
+    	sendToServlet("","Authenticate", "SessionValidation","GET");
+	    loadQuotation();
+	    window.setInterval(loadQuotation,10000); 
     });
 </script>
 </head>
@@ -69,7 +72,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li><a href="#" onclick="OnLogout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
   </div>

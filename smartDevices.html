@@ -57,6 +57,7 @@
     $(document).ready(function(){
     	var data;
       sendToServlet(data,"smartdevices", "LoadDevice","GET");
+      window.setInterval(checkupdate,5000); 
     });
   </script>
   <!-- New code - Test --> 

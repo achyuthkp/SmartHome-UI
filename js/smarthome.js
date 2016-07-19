@@ -51,6 +51,20 @@ function sendToServlet(data,url,action, method){
 	    	 }
 	    	 if(action == "StatusChange"){
 	    	 }
+	    	 if(action == "SessionValidation"){
+
+	    		 if(response.result == "Not_Authenticated"){
+	    			 window.location="signin.html";
+	    		 }
+	    	 }
+	    	 if(action == "Logout"){
+	    		 window.location="signin.html";
+	    	 }
+	    	 if(action == "UIUpdate"){
+	    		 if(response.result == "changed"){
+	    			 sendToServlet("","smartdevices", "LoadDevice","GET");
+	    		 }
+	    	 }
 	     }
 	     else {  
 	       // have not received data from server yet  
@@ -80,6 +94,9 @@ function onSignin(){
 	sendToServlet(data,"Authenticate", "signin","POST");
 }
 
+function OnLogout(){
+	sendToServlet("","Logout", "Logout","GET");
+}
 
 /**
  * This method clear the login form
@@ -88,6 +105,10 @@ function cleanLoginform(){
 	$("#errlabel").text("");
 	$("#username").text("");
 	$("#inputPassword").text("");
+}
+
+function checkupdate(){
+	sendToServlet("","UIUpdate", "UIUpdate","GET");
 }
 
 /* Switch ON/OFF click functions */
