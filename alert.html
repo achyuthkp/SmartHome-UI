@@ -10,11 +10,10 @@
 	<link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" />
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<!-- Testing new Alert Box -->
 	<script src="dist/sweetalert-dev.js"></script>
 	<script src="dist/sweetalert.min.js"></script>
   	<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
-  	<!-- End of Alert Box Test code -->
+  	<script type="text/javascript" src="js/smarthome.js"></script>
 	<script type="text/javascript" src="js/loadfiles.js"></script>
 	<script src="js/jquery-1.5.2.min.js" type="text/javascript"></script>
 	<script src="js/hideshow.js" type="text/javascript"></script>
@@ -52,28 +51,31 @@
         $('.column').equalHeight();
     });
 </script>
-<!-- New code - Test --> 
+<script type="text/javascript">
+    $(document).ready(function(){
+    var data = ["Suspcious movement detected in the living room.", "Door is unlocked.", "Power consumption has crossed the configured threshold limit."];
+    var $ul = $("#alertMessage");
+    displayAlerts($ul, data);
+    });
+  </script>
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,700,300italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
   <link href="css/font-awesome/font-awesome.css" rel="stylesheet">
   <link href="css/base.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
-  <!-- End of New Code - Test-->
 </head>
 <body>
 	
 	
 	<section id="main" class="column">
 		
-		<h4 class="alert_info">Welcome to the free template, this could be an informative message.</h4>
+		<h4 class="alert_info">Informative Message</h4>
 		
 		<h4 class="alert_warning">A Warning Alert</h4>
-		
-		<h4 class="alert_error">An Error Message</h4>
-		
-		<h4 class="alert_success">A Success Message</h4>
-	
-
+		<h4  class="alert_error" id="alertMessage">
+			<b><font size="4px">Emergency Alert :</font></b>
+			<hr/>
+		</h4>
 		<div class="spacer"></div>
 
 	</section>

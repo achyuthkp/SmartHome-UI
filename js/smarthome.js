@@ -353,7 +353,6 @@ else if (this.id =="submitAC")
             swal("Success!", "Timer is enabled", "success");
             sendToServlet(data,"smartdevices", "TimerSet","POST");
         }
-        
     }
     else{
     	 var data ={id:id, timerset:timerSet, timervalue:val, toggle:toggle, action:"timer"};
@@ -362,3 +361,16 @@ else if (this.id =="submitAC")
 }
 
 });
+
+/* Alert System  */
+function displayAlerts($ul, data) {
+   
+    // $.each(data, function(key, value)
+    for (var i = data.length - 1; i >= 0; i--) {
+
+        $ul.append($("<li>").html(data[i]));
+        $("li").css("list-style", "none");
+        $("li").css("padding","6px");
+    }
+     
+}
